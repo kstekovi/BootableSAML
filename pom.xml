@@ -67,7 +67,7 @@
                     </feature-packs>
                     <layers>
                         <layer>web-server</layer>
-                        <layer>keycloak-client-saml</layer>
+                        <layer>keycloak-saml</layer>
                     </layers>
                 </configuration>
                 <executions>
@@ -97,7 +97,7 @@
                     </feature-packs>
                     <layers>
                         <layer>web-server</layer>
-                        <layer>keycloak-client-saml</layer>
+                        <layer>keycloak-saml</layer>
                     </layers>
                     <context-root>simple-webapp</context-root>
                     <cli-sessions>
