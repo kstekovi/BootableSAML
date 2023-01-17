@@ -1,18 +1,18 @@
 /subsystem=keycloak-saml/secure-deployment=simple-webapp.war/:add
 
-/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="my-sp"/:add(sslPolicy=EXTERNAL,logoutPage="http://localhost:8080/simple")
+/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="bootable-jar"/:add(sslPolicy=EXTERNAL,logoutPage="http://127.0.0.1:8080/simple-webapp/")
 
-/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="my-sp"/Key=KEY1:add(signing=true, \
-PrivateKeyPem="MIIEogIBAAKCAQEAuCOAPEF2vpMmfud5VdQ7paVT1FDvOBfHA62WPFG42yrRsRL1/Xi+iCrxZ1a/wMDVTNEw1A3ptT4zCO5SWz66V9+oY2+9zH3WGRB88F69VsLX0RN8rA13i1m5gh7mzB1v+/xY2/KjnGitWaoMRFuy4749BktegmP1VcbA0dMNKdXqQhTx9wbgNdLyehjE/qMe9pUGXIBPjmbfvzCW3PvoNm5Ddf4sQZ0jADwxb+jzz1moBZHzzREF4saX0NzemBuUCtgNxSKyeWRIjfKGIERy61sJ5ZL66KcUUnPGEkWl6xfjKAAwysUTrRDWbbyoXwew6uGpX3XEtT7s5+qJ7kMoaQIDAQABAoIBACmuK4A4JztDDrMqDR5+8FNx5VRJT6TISQ2NlNSpgOjnO9jTnGfYFXS4F7WW/seQPpfpQB632X9jiWTLoUuzGrX6U+DSMcmgcD5zK3yzTTNe3kAeo5lEYRtjX2jTOtXYEfmdaLW8qgkk7pw9sBInGYqQjLqog8eK/cUBPLMiDTg7J1ML41FPbSVHSE9VnUUnjGVbpNjwXa9eXej4jcFZxSMVYfmXO6CQ+lxOJq1kmZiZSby6BBa8PklgW5KdL2OUKn8uw4vpFQCfiXzzGxY9USsa476whrO7lVgaK+6tX2r1YMeuZKqLd26sXw9z6jiJSn87YKyx1ZBuT1+iEH8EoesCgYEA7tKehoOepemwjXRx2XbwsPM++UsaxQuD4ML2kq7gdoaXd0w8xBX2Fk2d9UegxWZftTHNzsZ3qe8lt8IEONBzxc/1tSzQwm+ylm0M1kIRZf652IkKVMKTOSImf1xPktKVRkCS5rw82zhNQyl5WJbk+YWLOaX4Eo5r/T27FeB2EnMCgYEAxWH/lwNK2SvLvJmFQiFJvSWd2qrRIwIJMJOFHX0/aHT1JJ+Q4FOKWjP1qxFZ5VcXZotTRPJv49uPmg4gK2EsZiNS4lRMknvXH93PCVTPFPV22u2VWiKwtFKS+heNpoIv+Sr8P94W14vvWjfCt7Rm5gPzFJjtP/CWUMM+YxjwNrMCgYAlkDMm7STS68K9PQd7MN4Ctv+8rjdzrq/7di7aO29KtTi1puQX42xlbafeoHmFEukS0taQI19G9zpzgKyxUvgisObwrC/ZpT/tsRFH0fRymnIYwNVDJ6eIYPq1JYvOiBi6iAWTDSB1SpG8cpWHfZReOsb/Nj+ii4wotMDsW/W2SQKBgGArRjeSsBYtw39poUa+J0pUGJwg2/LdnBKh3ZqnmoxPZ91nLVRO/7rBVDH8KzuVel5JBdIy+Rcgs8/QkBXyq4o8Lbb+caxxUDhDfwtB2f+RNU6nsTwQaN4C2X+mmCqHhc42Bl8r2x88G+tt/Z459GSfigEAHaAonWROLIhl7ywHAoGAfrDBuEwDOupVBHLlpdo6N6LLxeQEq1YzrQ9TEuwi3IvC7C0TtvWcCVeBFaiKeHXWPD3Fr8kXRuOmCYQoq2MaTVfy21DWJWxi1j6AvzAhe6LJvt2rqq4S4vFnz36xonimOrTJs1Uu7aWgVvh5fhxVzFdKORJkWnkDYkxQeE+OdvE=", \
-CertificatePem="MIICpzCCAY8CBgGFq5Ju7DANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxib290YWJsZS1qYXIwHhcNMjMwMTEzMTQzNzU4WhcNMzMwMTEzMTQzOTM4WjAXMRUwEwYDVQQDDAxib290YWJsZS1qYXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC4I4A8QXa+kyZ+53lV1DulpVPUUO84F8cDrZY8UbjbKtGxEvX9eL6IKvFnVr/AwNVM0TDUDem1PjMI7lJbPrpX36hjb73MfdYZEHzwXr1WwtfRE3ysDXeLWbmCHubMHW/7/Fjb8qOcaK1ZqgxEW7Ljvj0GS16CY/VVxsDR0w0p1epCFPH3BuA10vJ6GMT+ox72lQZcgE+OZt+/MJbc++g2bkN1/ixBnSMAPDFv6PPPWagFkfPNEQXixpfQ3N6YG5QK2A3FIrJ5ZEiN8oYgRHLrWwnlkvropxRSc8YSRaXrF+MoADDKxROtENZtvKhfB7Dq4alfdcS1Puzn6onuQyhpAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAHREe0t9IGxjx4CJ21JNbWoLTcBw71Mp0neXUMx4MxeiZOQPVLGBa5WXCjwk/qMcduxN/pO8nSB0Ag1qn2bA1xQFzhbBQ8Swrmw4g9Jl98yprMAVjza74pkjWVnS8zEV31XbDwAsHtnBAYZvSqpztXv48sfG2nKPOQTmYFR6ZJTVmgxPxeGcXN27gcxLq5G7Ws5biAHdE1LaHG8CABoyP3KGFOivjDHsldR4RDUlGTDKcJVudAx2UnLnPU0qrudy8bNpIVkCRVIklaRvpxG47Clsvg/AGVCRablmOqkcm3GQnSmsBLio6JecEQBBp9sCXOzdot2MCWA52yCKGd1aioQ=")
+/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="bootable-jar"/Key=KEY1:add(signing=true, \
+PrivateKeyPem="MIIEogIBAAKCAQEAm3JXMlhR8yaFOv/EGaYw2Q5sL0Tmm6R7GxpZB3w0OMGWpXzzQc+zUNubZdoZRcTnys/0Qfg2Q1wIYOIrR/bzDRxB52Jz0/keeyVr2SHjuWU4j6ezsDCyj14fqcL7rDWlxz92VBbo6HkzcR1Y93V0W0sogaoR+rOw6c/JFKNq8BopA2tTV1VLhY6q+cn7zyh8396fHx9kTwJvweqJTgMVmcJcvo5Snvqd2/oa8nHYFQBy0VvQpEnWfji6U4gt4bk9yMDij3xsQGCyX1ldpIJ4osK+ewuogps2jv/OVKJHhqD0s2Z1hRjQEyrOrorthgChiJIl6V29GCsiH5bf9DM48wIDAQABAoIBAD9Fx2BiutiyMUDWosed8fwn9rk23ncz+DgL/XkigU8o3Vz3Az0igebDvPk0UV0ozQCsrMu9cLjyWSa2aM+eIUiQ2/KHDIaXvGR70u5K8RqhrOgsZuOsrsHUmibLiw2JuLTljBCmUp9t1haQz4nKcVZHvXEp/K+DPNuvDDYuXnTkTWLMrBwyPaXd+v3q7ASQiiKDL/cp9mmS0mADl5VCb9ZAWNqCkZ4Np/pytQNoVCNQwqIorlNTdhXMl40cjFX/1+JANd+NPTLK6t8mQplZGoMJzoq+l7yZj04YkCJorr9QlRNrd//nYRyMBVKudya0zUz8gSRUcAtbQcs/x/GHEOECgYEA4l4QQKNWHbq77q6Hlc6EvYQzopwwl08CZFTmPgzpU/1JVpgOxcGx7Y84C03gspZyGHe+Slsi5lXDdkv5FY+yysLKVk0eXwvJhuB9WMq/rX0UB0TXxNe3l5mKHwXXw7uR8O9RDeQe1EX+AvZ4/wwfUcvNCSgVT15Lwg0A5kXR4uUCgYEAr8ubfwWLscOmAcZO7qnhcnqYRLGrTVSrSZ+NkXSE68qclB1n+swrpiBbf1PTwGM3WatioonHJmyvBkmfDMetpKMUEOMZt19txfF4iuZ4P4itqgBfs/X1+HrHCvwZPAx5zWkaK5kmzzJtiTUisFr6uSsJiP9DFtv3bsAnnycxNvcCgYAQIkIoSTv3DHsejOPvAnQlicmgWl+AOUpjWkW6wHLU4KWcfWP4JlEHLIEDFT7hm6VwJwCyDgLTxeMTiGCtb7t/hhijxAVZIt7vNQraDEFTHSoTRo3WYsWcEX5trZ3uPm0tbfEp+0tTN9Xd4jFHhFarHspzT58NNBxULVcWEn3eHQKBgHbgC0Vo3Z8Wu0JF9IhFTlOYfTEup7UCRVXi09uBXIUKHLm37OFWgUm0ZcsDR5S4QuybDXb2Djp4kh6BWFFPEafcMyx8NZ6fpF6PPEFJOhVUeoMT/6N09qDRfZl7AiFuGkuCABVtWiYQZqu6x7tTumnOpYMDgj2J/5bfz6s62HffAoGAFkM233SWSYyZoXkPInbhN4MOS/hiiiBBCTBCfI/3C3Tfpjr7BVakdEqMjuv1nDEWWfScweQvTvWbyLbLCAqB+s/ibbLuMW2k49AzeNFFETdz1o3oZiW0Kpp2xZun7OpqurdbHu5ss4ePonwDwvFCbsipphglr4U/lVgl44TCcZ8=", \
+CertificatePem="MIICpzCCAY8CBgGFxEZKBTANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxib290YWJsZS1qYXIwHhcNMjMwMTE4MDk0NTE4WhcNMzMwMTE4MDk0NjU4WjAXMRUwEwYDVQQDDAxib290YWJsZS1qYXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCbclcyWFHzJoU6/8QZpjDZDmwvROabpHsbGlkHfDQ4wZalfPNBz7NQ25tl2hlFxOfKz/RB+DZDXAhg4itH9vMNHEHnYnPT+R57JWvZIeO5ZTiPp7OwMLKPXh+pwvusNaXHP3ZUFujoeTNxHVj3dXRbSyiBqhH6s7Dpz8kUo2rwGikDa1NXVUuFjqr5yfvPKHzf3p8fH2RPAm/B6olOAxWZwly+jlKe+p3b+hrycdgVAHLRW9CkSdZ+OLpTiC3huT3IwOKPfGxAYLJfWV2kgniiwr57C6iCmzaO/85UokeGoPSzZnWFGNATKs6uiu2GAKGIkiXpXb0YKyIflt/0MzjzAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAAjLwEAKE1ZC0j2XNql934kIV8J+1oQYg/axhlf4qi6iF0cseNSMj3ZxcqiKiyHckVqT9hdaj83yLzu2iwDSeiUCJDUpszvifrZK3Oj9xvGEWoADIShUPjMYMGDhtGMhaV8sO5NJjAhnyAK8TGNRRksbYTtRQqIdiTNRGDeb1QJB3PAtST2g8GBqiLjzE3HwifprVfZbx68mUKVD4o9jQYVrXF0vYvsVla6ODx8mTEEw2wcZa0Qk1dioN1wUHPWOtnLBfr1mnCCbFHEHQjDsOyxvE7Yjmdx7JQrIihX3IzqTnK1OYZD1XR5Dy2NjZOkDGl4dU5ph3xVoVPrfp6bCJ6c=")
 
-/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="my-sp"/IDP=idp/:add( \
+/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="bootable-jar"/IDP=idp/:add( \
     SingleSignOnService={ \
         signRequest=true, \
         validateResponseSignature=true, \
         validateAssertionSignature=false, \
         requestBinding=POST, \
-        bindingUrl=http://localhost:8180/realms/my-realm/protocol/saml}, \
+        bindingUrl=http://127.0.0.1:8180/auth/realms/my-realm/protocol/saml}, \
     SingleLogoutService={ \
         signRequest=true, \
         signResponse=true, \
@@ -20,10 +20,10 @@ CertificatePem="MIICpzCCAY8CBgGFq5Ju7DANBgkqhkiG9w0BAQsFADAXMRUwEwYDVQQDDAxib290
         validateResponseSignature=true, \
         requestBinding=POST, \
         responseBinding=POST, \
-        postBindingUrl=http://localhost:8180/realms/my-realm/protocol/saml, \
-        redirectBindingUrl=http://localhost:8180/realms/my-realm/protocol/saml} \
+        postBindingUrl=http://127.0.0.1:8180/auth/realms/my-realm/protocol/saml, \
+        redirectBindingUrl=http://127.0.0.1:8180/auth/realms/my-realm/protocol/saml} \
 )
 
-/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="my-sp"/IDP=idp/:write-attribute(name=signatureAlgorithm,value=RSA_SHA256)
+/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="bootable-jar"/IDP=idp/:write-attribute(name=signatureAlgorithm,value=RSA_SHA256)
 
-/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="my-sp"/IDP=idp/:write-attribute(name=signatureCanonicalizationMethod,value=http://www.w3.org/2001/10/xml-exc-c14n#)
+/subsystem=keycloak-saml/secure-deployment=simple-webapp.war/SP="bootable-jar"/IDP=idp/:write-attribute(name=signatureCanonicalizationMethod,value=http://www.w3.org/2001/10/xml-exc-c14n#)

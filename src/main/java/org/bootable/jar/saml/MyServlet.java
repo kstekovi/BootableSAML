@@ -5,10 +5,14 @@ import java.io.PrintWriter;
 import java.security.Principal;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
+
+@WebServlet(value="/secured")
 public class MyServlet extends HttpServlet {
 
     @Override
