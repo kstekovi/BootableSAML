@@ -64,6 +64,9 @@
                             <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
                             <version>999-SNAPSHOT</version>
                         </feature-pack>
+                        <feature-pack>
+                            <location>org.wildfly.cloud:wildfly-cloud-galleon-pack:2.0.0.Final</location>
+                        </feature-pack>
                     </feature-packs>
                     <layers>
                         <layer>web-server</layer>
