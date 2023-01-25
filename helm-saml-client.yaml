@@ -1,0 +1,31 @@
+build:
+        uri: https://github.com/kstekovi/BootableSAML.git
+        env:
+          - name: MAVEN_MIRROR_URL
+            value: 'http://repository.eapqe.psi.redhat.com:8081/artifactory/all/'
+          - name: MAVEN_ARGS_APPEND
+            value: '-Dinsecure.repositories=WARN'
+deploy:
+        env:
+                - name: ARTIFACT_DIR
+                  value: "target"
+                - name: SSO_URL
+                  value: "http://keycloak-saml-galleon-test.apps.kstekovi-uwbi.eapqe.psi.redhat.com/auth/realms/eap-realm/protocol/saml"
+                - name: SSO_REALM
+                  value: "eap-realm"
+                - name: SSO_USERNAME
+                  value: "client"
+                - name: SSO_PASSWORD
+                  value: "creator"
+                - name: SSO_SAML_CERTIFICATE_NAME
+                  value: "app-profile-saml"
+                - name: SSO_SAML_KEYSTORE
+                  value: "keystore.jks"
+                - name: SSO_SAML_KEYSTORE_PASSWORD
+                  value: "password"
+                - name: SSO_SAML_KEYSTORE_DIR
+                  value: "/etc/eap-app-secret"
+                - name: SSO_SAML_LOGOUT_PAGE
+                  value: "/index.html"
+                - name: SSO_SECRET
+                  value: "foo"
