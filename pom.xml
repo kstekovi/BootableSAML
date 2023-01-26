@@ -50,6 +50,13 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
+
+
+
+<!--            ###################-->
+<!--            #  For OPENSHIFT  #-->
+<!--            ###################-->
+
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
@@ -69,9 +76,9 @@
                         </feature-pack>
                     </feature-packs>
                     <layers>
-                        <layer>cloud-default-config</layer>
+                        <layer>cloud-default-config</layer> <!-- Require for configuration generation -->
 <!--                        <layer>web-server</layer>-->
-                        <layer>keycloak-saml</layer>
+                        <layer>keycloak-saml</layer> <!-- OpenShift require different layer-->
                     </layers>
                 </configuration>
                 <executions>
@@ -84,42 +91,49 @@
             </plugin>
 
 
-<!--            <plugin>-->
-<!--                <groupId>org.wildfly.plugins</groupId>-->
-<!--                <artifactId>wildfly-jar-maven-plugin</artifactId>-->
-<!--                <version>8.0.1.Final</version>-->
-<!--                <configuration>-->
-<!--                    <feature-packs>-->
-<!--                        <feature-pack>-->
-<!--                            <location>wildfly@maven(org.jboss.universe:community-universe):current</location>-->
-<!--                        </feature-pack>-->
-<!--                        <feature-pack>-->
-<!--                            <groupId>org.keycloak</groupId>-->
-<!--                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>-->
-<!--                            <version>999-SNAPSHOT</version> &lt;!&ndash; TODO: Update version when we know what it is &ndash;&gt;-->
-<!--                        </feature-pack>-->
-<!--                    </feature-packs>-->
-<!--                    <layers>-->
-<!--                        <layer>web-server</layer>-->
-<!--                        <layer>keycloak-saml</layer>-->
-<!--                    </layers>-->
-<!--                    <context-root>simple-webapp</context-root>-->
-<!--                    <cli-sessions>-->
-<!--                        <cli-session>-->
-<!--                            <script-files>-->
-<!--                                <script>configure-saml.cli</script>-->
-<!--                            </script-files>-->
-<!--                        </cli-session>-->
-<!--                    </cli-sessions>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>package</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+
+<!--            ######################-->
+<!--            #  For bootable-jar  #-->
+<!--            ######################-->
+
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>8.0.1.Final</version>
+                <configuration>
+                    <feature-packs>
+                        <feature-pack>
+                            <location>wildfly@maven(org.jboss.universe:community-universe):current</location>
+                        </feature-pack>
+                        <feature-pack>
+                            <groupId>org.keycloak</groupId>
+                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
+                            <version>999-SNAPSHOT</version> <!-- TODO: Update version when we know what it is -->
+                        </feature-pack>
+                    </feature-packs>
+                    <layers>
+                        <layer>web-server</layer>
+                        <layer>keycloak-client-saml</layer> <!-- Bare metal require different layer-->
+                        <layer>logging</layer>
+                    </layers>
+                    <context-root>simple-webapp</context-root>
+                    <cli-sessions>
+                        <cli-session>
+                            <script-files>
+                                <script>configure-saml.cli</script> <!-- configure the saml client subsystem -->
+                                <script>logging.cli</script>
+                            </script-files>
+                        </cli-session>
+                    </cli-sessions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
