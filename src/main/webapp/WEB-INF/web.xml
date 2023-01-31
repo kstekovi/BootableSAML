@@ -1,9 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         metadata-complete="false">
+         metadata-complete="false"
+         version="2.5">
+
+    <display-name>OpenEJB Servlet Examples</display-name>
+
+    <security-role>
+        <role-name>manager</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>user</role-name>
+    </security-role>
+
 
     <security-constraint>
         <web-resource-collection>
@@ -11,7 +21,7 @@
             <url-pattern>/secured</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>*</role-name>
+            <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
 
@@ -19,9 +29,5 @@
     <login-config>
         <auth-method>KEYCLOAK-SAML</auth-method>
     </login-config>
-
-    <security-role>
-        <role-name>*</role-name>
-    </security-role>
 
 </web-app>
