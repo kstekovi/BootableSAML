@@ -107,11 +107,12 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>4.0.0.Final</version>
+                <version>4.1.0.Final</version>
                 <configuration>
                     <feature-packs>
                         <feature-pack>
                             <location>wildfly@maven(org.jboss.universe:community-universe):current</location>
+<!--                            <location>eap-s2i@maven(org.jboss.universe:s2i-universe)</location>-->
                         </feature-pack>
                         <feature-pack>
                             <groupId>org.keycloak</groupId>
@@ -125,7 +126,8 @@
                     <layers>
                         <layer>logging</layer>
 <!--                        <layer>cloud-default-config</layer> &lt;!&ndash; Require for configuration generation &ndash;&gt;-->
-                        <layer>web-server</layer>
+<!--                        <layer>web-server</layer>-->
+<!--                        <layer>keycloak-client-saml</layer> &lt;!&ndash; Bare metal require different layer&ndash;&gt;-->
 <!--                        <layer>keycloak-saml</layer> &lt;!&ndash; OpenShift require different layer&ndash;&gt;-->
                         <layer>keycloak-client-saml-ejb</layer>
                     </layers>
@@ -133,7 +135,7 @@
                     <packaging-scripts>
                         <packaging-script>
                             <scripts>
-                                <script>configure-saml.cli</script>
+<!--                                <script>configure-saml.cli</script>-->
                                 <script>logging.cli</script>
                             </scripts>
                         </packaging-script>
@@ -154,44 +156,44 @@
 <!--            #  For bootable-jar  #-->
 <!--            ######################-->
 
-<!--            <plugin>-->
-<!--                <groupId>org.wildfly.plugins</groupId>-->
-<!--                <artifactId>wildfly-jar-maven-plugin</artifactId>-->
-<!--                <version>8.0.1.Final</version>-->
-<!--                <configuration>-->
-<!--                    <feature-packs>-->
-<!--                        <feature-pack>-->
-<!--                            <location>wildfly@maven(org.jboss.universe:community-universe):current</location>-->
-<!--                        </feature-pack>-->
-<!--                        <feature-pack>-->
-<!--                            <groupId>org.keycloak</groupId>-->
-<!--                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>-->
-<!--                            <version>999-SNAPSHOT</version> &lt;!&ndash; TODO: Update version when we know what it is &ndash;&gt;-->
-<!--                        </feature-pack>-->
-<!--                    </feature-packs>-->
-<!--                    <layers>-->
-<!--                        <layer>web-server</layer>-->
-<!--                        <layer>keycloak-client-saml</layer> &lt;!&ndash; Bare metal require different layer&ndash;&gt;-->
-<!--                        <layer>logging</layer>-->
-<!--                    </layers>-->
-<!--                    <context-root>simple-webapp</context-root>-->
-<!--                    <cli-sessions>-->
-<!--                        <cli-session>-->
-<!--                            <script-files>-->
-<!--                                <script>configure-saml.cli</script> &lt;!&ndash; configure the saml client subsystem &ndash;&gt;-->
-<!--                                <script>logging.cli</script>-->
-<!--                            </script-files>-->
-<!--                        </cli-session>-->
-<!--                    </cli-sessions>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>package</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>9.0.0.Final</version>
+                <configuration>
+                    <feature-packs>
+                        <feature-pack>
+                            <location>wildfly@maven(org.jboss.universe:community-universe):current</location>
+                        </feature-pack>
+                        <feature-pack>
+                            <groupId>org.keycloak</groupId>
+                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
+                            <version>999-SNAPSHOT</version> <!-- TODO: Update version when we know what it is -->
+                        </feature-pack>
+                    </feature-packs>
+                    <layers>
+                        <layer>web-server</layer>
+                        <layer>keycloak-client-saml</layer> <!-- Bare metal require different layer-->
+                        <layer>logging</layer>
+                    </layers>
+                    <context-root>simple-webapp</context-root>
+                    <cli-sessions>
+                        <cli-session>
+                            <script-files>
+                                <script>configure-saml.cli</script> <!-- configure the saml client subsystem -->
+                                <script>logging.cli</script>
+                            </script-files>
+                        </cli-session>
+                    </cli-sessions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
