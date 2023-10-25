@@ -14,7 +14,7 @@
 
     <properties>
         <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
-        <version.server.bom>27.0.0.Final</version.server.bom>
+        <version.server.bom>30.0.0.Final</version.server.bom>
 
 
         <maven.compiler.target>11</maven.compiler.target>
@@ -40,53 +40,41 @@
             <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
-
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.ejb3</groupId>
             <artifactId>jboss-ejb3-ext-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.ejb</groupId>
             <artifactId>jakarta.ejb-api</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.3.25</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>jakarta.xml.ws</groupId>
-            <artifactId>jakarta.xml.ws-api</artifactId>
-            <version>4.0.0</version>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>jakarta.jms</groupId>
             <artifactId>jakarta.jms-api</artifactId>
-            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
-
-
-
-
-
     </dependencies>
 
     <build>
@@ -98,60 +86,6 @@
                 <version>3.3.2</version>
             </plugin>
 
-
-
-<!--            ###################-->
-<!--            #  For OPENSHIFT  #-->
-<!--            ###################-->
-
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>4.1.0.Final</version>
-                <configuration>
-                    <feature-packs>
-                        <feature-pack>
-                            <location>wildfly@maven(org.jboss.universe:community-universe):current</location>
-<!--                            <location>eap-s2i@maven(org.jboss.universe:s2i-universe)</location>-->
-                        </feature-pack>
-                        <feature-pack>
-                            <groupId>org.keycloak</groupId>
-                            <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
-                            <version>999-SNAPSHOT</version>
-                        </feature-pack>
-                        <feature-pack>
-                            <location>org.wildfly.cloud:wildfly-cloud-galleon-pack:2.0.0.Final</location>
-                        </feature-pack>
-                    </feature-packs>
-                    <layers>
-                        <layer>logging</layer>
-<!--                        <layer>cloud-default-config</layer> &lt;!&ndash; Require for configuration generation &ndash;&gt;-->
-<!--                        <layer>web-server</layer>-->
-<!--                        <layer>keycloak-client-saml</layer> &lt;!&ndash; Bare metal require different layer&ndash;&gt;-->
-<!--                        <layer>keycloak-saml</layer> &lt;!&ndash; OpenShift require different layer&ndash;&gt;-->
-                        <layer>keycloak-client-saml-ejb</layer>
-                    </layers>
-
-                    <packaging-scripts>
-                        <packaging-script>
-                            <scripts>
-<!--                                <script>configure-saml.cli</script>-->
-                                <script>logging.cli</script>
-                            </scripts>
-                        </packaging-script>
-                    </packaging-scripts>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-
 <!--            ######################-->
 <!--            #  For bootable-jar  #-->
 <!--            ######################-->
@@ -159,7 +93,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-jar-maven-plugin</artifactId>
-                <version>9.0.0.Final</version>
+                <version>10.0.0.Final</version>
                 <configuration>
                     <feature-packs>
                         <feature-pack>
@@ -168,12 +102,12 @@
                         <feature-pack>
                             <groupId>org.keycloak</groupId>
                             <artifactId>keycloak-saml-adapter-galleon-pack</artifactId>
-                            <version>999-SNAPSHOT</version> <!-- TODO: Update version when we know what it is -->
+                            <version>22.0.3</version>
                         </feature-pack>
                     </feature-packs>
                     <layers>
                         <layer>web-server</layer>
-                        <layer>keycloak-client-saml</layer> <!-- Bare metal require different layer-->
+                        <layer>keycloak-client-saml-ejb</layer> <!-- Bare metal require different layer-->
                         <layer>logging</layer>
                     </layers>
                     <context-root>simple-webapp</context-root>
